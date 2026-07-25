@@ -1,5 +1,6 @@
-console.log("ISHAN TEST 123");
-import React,{useEffect,useState}from'react';import{createRoot}from'react-dom/client';import{AnimatePresence,motion}from'framer-motion';import{ArrowRight,BadgeCheck,ChevronDown,ChevronUp,Dumbbell,Flame,HeartPulse,Instagram,Mail,MapPin,Menu,Phone,Play,Plus,Star,Target,Users, X,Zap}from'lucide-react';import'./styles.css';
+console.log("ISHAN TEST 123")
+  
+  import React,{useEffect,useState}from'react';import{createRoot}from'react-dom/client';import{AnimatePresence,motion}from'framer-motion';import{ArrowRight,BadgeCheck,ChevronDown,ChevronUp,Dumbbell,Flame,HeartPulse,Instagram,Mail,MapPin,Menu,Phone,Play,Plus,Star,Target,Users, X,Zap}from'lucide-react';import'./styles.css';
 const photo = (id) => `/images/${id}.png`;
 const icon={Dumbbell,Flame,HeartPulse,Target,Users,Zap};
 const services=[['Weight Training','Dumbbell','Build a stronger foundation with expert-led lifting.'],['Fat Loss','Flame','Smart training plans for sustainable results.'],['Muscle Building','Zap','Progressive programs for strength and size.'],['Cardio Training','HeartPulse','Improve endurance in a high-energy cardio zone.'],['Functional Training','Target','Move better, perform better, feel unstoppable.'],['CrossFit','Zap','Intense scalable workouts with team spirit.'],['Yoga & Mobility','HeartPulse','Restore balance, flexibility and focus.'],['Personal Training','Users','One-to-one coaching around your goals.']];
@@ -565,7 +566,84 @@ function Trainers() {
   );
 }
 function BMI(){let[h,setH]=useState(175),[w,setW]=useState(70),b=w/(h/100)**2,c=b<18.5?'Underweight':b<25?'Healthy range':b<30?'Overweight':'Obese';return <section className="section bmi"><div><Title tag="KNOW YOUR NUMBER" title={<>Meet your body<br/>where it <em>is.</em></>} copy="Your BMI is a helpful starting point. Set your next benchmark with a coach."/><div className="ranges"><label>Height <b>{h} cm</b><input type="range" min="120" max="220" value={h} onChange={e=>setH(+e.target.value)}/></label><label>Weight <b>{w} kg</b><input type="range" min="35" max="180" value={w} onChange={e=>setW(+e.target.value)}/></label></div></div><div className="result"><div className="gauge" style={{'--p':Math.min(100,b/40*100)+'%'}}><b>{b.toFixed(1)}</b><span>BMI SCORE</span></div><h3>{c}</h3><p>A healthy weight range is <b>{(18.5*(h/100)**2).toFixed(1)}–{(24.9*(h/100)**2).toFixed(1)} kg</b>.</p></div></section>}
-function More(){let[open,setOpen]=useState(0),q=['What are your gym timings?','Do you offer personal training?','Is there a free trial?','Do you provide diet plans?','How can I join?'];return <><section id="testimonials" className="section testimonial"><Title tag="MEMBER STORIES" title={<>Results you can <em>feel.</em></>}/><div className="stars">★★★★★</div><blockquote>“Fitness Hub made training feel like the best part of my day. The coaches see you, push you, and celebrate every win.”</blockquote><p><b>Naina Malhotra</b><br/>Member since 2023</p></section><section className="section faq"><Title tag="FAQ" title={<>Questions, <em>answered.</em></>}/>{q.map((x,i)=><button onClick={()=>setOpen(open===i?-1:i)}><b>{x}</b>{open===i?<ChevronUp/>:<ChevronDown/>}{open===i&&<p>{i===0?'Fitness Hub is open 24 hours a day, 7 days a week, so your workout always fits your schedule.':'Yes. Our certified coaches offer programs tailored to your goals and lifestyle.'}</p>}</button>)}</section></>}
+function More() {
+  const [open, setOpen] = useState(0);
+
+  const q = [
+    "What are your gym timings?",
+    "Do you offer personal training?",
+    "Is there a free trial?",
+    "Do you provide diet plans?",
+    "How can I join?"
+  ];
+
+  const answers = [
+    "Fitness Hub is open 24 hours a day, 7 days a week, so your workout always fits your schedule.",
+    "Yes! Our certified trainers provide one-to-one personal coaching based on your goals.",
+    "Yes, we offer a free trial so you can experience our gym before joining.",
+    "Yes, customized diet plans are available for our members.",
+    "Simply visit our gym or contact us through the website to become a member."
+  ];
+
+  return (
+    <>
+      <section id="testimonials" className="section testimonial">
+        <Title
+          tag="MEMBER STORIES"
+          title={<>Results you can <em>feel.</em></>}
+        />
+
+        <div className="stars">★★★★★</div>
+
+        <blockquote>
+          “Fitness Hub made training feel like the best part of my day.”
+        </blockquote>
+
+        <p>
+          <b>Naina Malhotra</b>
+          <br />
+          Member since 2023
+        </p>
+      </section>
+
+      <section className="section faq">
+
+        <Title
+          tag="FAQ"
+          title={<>Questions, <em>answered.</em></>}
+        />
+
+        <div className="faq-container">
+
+          {q.map((x, i) => (
+            <div
+              className={open === i ? "faq-item active" : "faq-item"}
+              key={i}
+            >
+              <button
+                className="faq-question"
+                onClick={() => setOpen(open === i ? -1 : i)}
+              >
+                <span>{x}</span>
+
+                {open === i ? <ChevronUp /> : <ChevronDown />}
+              </button>
+
+              {open === i && (
+                <div className="faq-answer">
+                  <p>{answers[i]}</p>
+                </div>
+              )}
+
+            </div>
+          ))}
+
+        </div>
+
+      </section>
+    </>
+  );
+}
 function Contact(){
 return (
 <>
@@ -592,6 +670,7 @@ Above SBI ATM,<br/>
 Satna, Madhya Pradesh – 485001
 </span>
 
+
 <span>
 🕒 <b>Opening Hours</b><br/>
 🌅 Morning: 5:00 AM – 11:00 AM<br/>
@@ -610,12 +689,12 @@ Follow @fitness_hubmp19
 
 <span>
 <Phone size={20}/>
-Phone Number (Coming Soon)
+Phone Number (+91 62653 19303)
 </span>
 
 <span>
 <Mail size={20}/>
-Email Address (Coming Soon)
+Email Address (cs3860366@gmail.com)
 </span>
 
 </div>
@@ -632,7 +711,7 @@ Instagram
 </a>
 
 <a
-href="https://wa.me/91XXXXXXXXXX"
+href="https://wa.me/+916265319303"
 target="_blank"
 className="btn alt"
 >
@@ -640,7 +719,7 @@ WhatsApp
 </a>
 
 <a
-href="tel:+91XXXXXXXXXX"
+href="tel:+9162653 19303"
 className="btn"
 >
 Call Now
@@ -713,15 +792,19 @@ function App() {
   const [l, setL] = useState(true);
 
   useEffect(() => {
-    const t = setTimeout(() => setL(false), 700);
+    const t = setTimeout(() => setL(false), 2500);
     return () => clearTimeout(t);
   }, []);
 
   return l ? (
     <div className="load">
-      F
-      <br />
-      <small>FITNESS HUB</small>
+      <img
+        src="/images/gym logo.jpg.png"
+        alt="Fitness Hub Logo"
+        className="loader-logo"
+      />
+
+      <h1>FITNESS HUB</h1>
     </div>
   ) : (
     <>
@@ -739,5 +822,4 @@ function App() {
     </>
   );
 }
-
 createRoot(document.getElementById("root")).render(<App />);
