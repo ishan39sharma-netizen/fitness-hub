@@ -277,7 +277,6 @@ HERO
 ========================== */
 
 .hero{
-
 position:relative;
 
 min-height:100vh;
@@ -290,10 +289,10 @@ justify-content:center;
 
 overflow:hidden;
 
+padding:120px 20px 60px;
+
 background:
-
 linear-gradient(180deg,#07070b,#101018,#07070b);
-
 }
 
 .hero::before{
@@ -2095,9 +2094,22 @@ color:#ccc !important;
 }
 
 @media(max-width:900px){
+
 .bmi{
 grid-template-columns:1fr !important;
+gap:40px !important;
+padding:60px 20px !important;
 }
+
+.ranges{
+padding:0 8px !important;
+box-sizing:border-box;
+}
+
+.ranges input{
+width:calc(100% - 5px) !important;
+}
+
 }
 /* ==========================
    PREMIUM FAQ
@@ -2288,10 +2300,13 @@ transform:translateY(0);
 }
 
 .hero-container{
-display:flex;
-flex-direction:column-reverse;
-text-align:center;
-gap:40px;
+width:100%;
+max-width:1400px;
+margin:auto;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:70px;
+align-items:center;
 }
 
 .hero-left{
@@ -2429,4 +2444,56 @@ font-size:28px;
 font-size:40px;
 }
 
+}
+.hero-left,
+.hero-right{
+width:100%;
+}
+
+.hero-left p{
+max-width:100%;
+}
+
+.hero-image{
+width:100%;
+display:flex;
+justify-content:center;
+}
+
+.hero-image img{
+width:100%;
+max-width:320px;
+height:auto;
+}
+
+.glass-header{
+width:96%;
+left:50%;
+transform:translateX(-50%);
+}
+
+.glass-header nav{
+z-index:99999;
+}
+
+.contact-info,
+.map-box{
+width:100%;
+}
+
+.contact-card{
+padding:25px;
+}
+
+.gallery-item img{
+width:100%;
+height:auto;
+}
+
+.about-img img{
+height:auto;
+}
+
+.trainer img{
+height:auto;
 }
