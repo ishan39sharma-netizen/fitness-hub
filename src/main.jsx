@@ -702,7 +702,7 @@ Email Address (cs3860366@gmail.com)
 <div className="social-buttons">
 
 <a
-href="https://instagram.com/YOUR_USERNAME"
+href="https://www.instagram.com/fitness_hubmp19/"
 target="_blank"
 className="btn"
 >
